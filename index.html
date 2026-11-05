@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Star Wars Characters</title>
+
+  <!-- fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Jost:ital,wght@0,100..900;1,100..900&family=Lobster&display=swap" rel="stylesheet">
+
+  <!-- remix icon (search, home and group icons) -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+
+  <!-- tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="font-['Inter'] min-h-screen bg-gradient-to-b from-slate-950 via-indigo-950 to-black text-slate-950">
+
+  <!-- ================= HEADER ================= -->
+  <header class="fixed z-50 w-full top-0 left-0 right-0 h-20 bg-black/90 backdrup-blur-sm border-b border-b-yellow-400/20">
+    <nav class="container mx-auto px-4 py-5 flex items-center justify-between">
+
+      <!-- logo -->
+      <h1 class="text-2xl font-bold text-yellow-400">Star Wars</h1>
+
+      <!-- desktop menu (hidden on mobile) -->
+      <ul class="hidden md:flex items-center gap-8 text-white">
+        <li><a href="#home" class="navLink hover:text-yellow-400">Home</a></li>
+        <li><a href="#characters" class="navLink hover:text-yellow-400">Characters</a></li>
+      </ul>
+
+      <!-- right side: search + hamburger -->
+      <div class="flex items-center gap-4">
+        <button id="searchBtn" class="text-white hover:text-yellow-400" aria-label="Search">
+          <i class="ri-search-line text-2xl"></i>
+        </button>
+
+        <!-- hamburger button (only on mobile) -->
+        <button id="menuBtn" class="md:hidden w-11 h-11 flex flex-col items-center justify-center gap-1.5" aria-label="Open menu">
+          <span class="block w-7 h-0.5 bg-yellow-400 rounded transition-all duration-300"></span>
+          <span class="block w-7 h-0.5 bg-yellow-400 rounded transition-all duration-300"></span>
+          <span class="block w-7 h-0.5 bg-yellow-400 rounded transition-all duration-300"></span>
+        </button>
+      </div>
+
+    </nav>
+  </header>
+
+  <!--=============search bar============-->
+  <div id="searchBar" class="hidden fixed top-20 left-0 right-0 z-40 bg-black/80 backdrop-blur-md border-b border-yellow-400/20 ">
+    <div class="container mx-auto px-4 py-3 flex items-center gap-3">
+      <i class="ri-search-line text-yellow-400 text-xl"></i>
+      <input id="filter" type="text" placeholder="search characters..." 
+      class="flex-1 bg-transparent text-base text-white placeholder-gray-400 focus:outline-none" autocomplete="off">
+      <button id="closeSearchBtn" class="w-10 h-10 text-gray-400 hover:text-yellow-400 text-xl" aria-label="Close search">
+        <i class="ri-close-line"></i>
+      </button>
+    </div>
+  </div>
+
+
+  <!-- ================= MOBILE MENU ================= -->
+
+  <!-- dark background behind the panel (hidden at first) -->
+  <div id="overlay" class="md:hidden hidden fixed inset-0 z-40 bg-black/60 backdrop-blur-sm"></div>
+
+  <!-- panel: closed = -right-72 (outside the screen), open = right-0 -->
+  <aside id="panel" class="md:hidden fixed top-0 -right-72 z-40 h-full w-72 bg-slate-950/90 backdrop-blur-md border-l border-yellow-400/30 pt-28 px-8 text-white transition-all duration-300">
+    <p class="text-yellow-400/70 tracking-widest text-xs mb-4">MENU</p>
+
+    <ul class="flex flex-col">
+      <li>
+        <a href="#home" class="navLink flex items-center gap-4 py-4 text-2xl font-['Lobster'] border-b border-white/10 hover:text-yellow-400 transition">
+          <i class="ri-home-4-line text-yellow-400"></i>
+          Home
+        </a>
+      </li>
+      <li>
+        <a href="#characters" class="navLink flex items-center gap-4 py-4 text-2xl font-['Lobster'] border-b border-white/10 hover:text-yellow-400 transition">
+          <i class="ri-group-line text-yellow-400"></i>
+          Characters
+        </a>
+      </li>
+    </ul>
+  </aside>
+
+  <!-- ================= PAGE CONTENT ================= -->
+  <main class="container mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-8 sm:pb-12">
+
+    <!-- ===== HOME SECTION ===== -->
+    <section id="home" class="text-white scroll-mt-24">
+      <div class="text-center py-12 sm:py-20">
+        <p class="text-yellow-400 tracking-widest text-sm sm:text-base">
+          A long time ago in a galaxy far, far away...
+        </p>
+
+        <h2 class="font-['Lobster'] text-orange-100 text-5xl sm:text-6xl lg:text-7xl pt-5">
+          STAR WARS
+        </h2>
+
+        <p class="mt-6 max-w-2xl mx-auto text-base sm:text-xl text-gray-200 leading-relaxed">
+          A space-fantasy saga created by George Lucas.
+          The first film came out in 1977 and it has grown
+          into movies, series, books and games
+        </p>
+      </div>
+
+      <img src="./images/star-wars-home.jpeg" alt="Star Wars"
+           class="w-full max-w-4xl mx-auto h-56 sm:h-80 lg:h-96 object-cover rounded-2xl border border-white/20 shadow-lg mb-12"
+           onerror="this.style.display='none'">
+    </section>
+
+    <!-- ===== CHARACTERS SECTION ===== -->
+    <section id="characters" class="scroll-mt-24 pt-10 min-h-screen">
+
+      <!-- title (on mobile the words are under each other) -->
+      <h1 class="text-center font-['Lobster'] font-bold text-3xl sm:text-4xl lg:text-5xl text-orange-100 tracking-wide leading-tight">
+        <span class="block sm:inline">StarWars</span>
+        <span class="block sm:inline">Characters</span>
+      </h1>
+
+      <!-- loading (hidden at first, app.js shows it) -->
+      <div id="loading" class="hidden flex-col items-center gap-3 py-16 text-white">
+        <div class="w-12 h-12 border-4 border-white/20 border-t-yellow-400 rounded-full animate-spin"></div>
+        <p>Loading...</p>
+      </div>
+
+      <!--when search input is not found-->
+      <p id="noResult" class="hidden text-center text-gray-300 py-10">No charcter found.</p>
+
+      <!-- cards are added here by app.js -->
+      <div id="characters-box" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-6 items-start"></div>
+
+    </section>
+
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
