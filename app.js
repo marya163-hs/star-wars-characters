@@ -113,12 +113,15 @@ function filterCards(){
   const text=filter.value.toLowerCase();
   const cards=document.querySelectorAll('.card');
 
+  let visibleCount=0;
+
   //convert to array
   Array.from(cards).forEach(function(card){
     const cardName =card.querySelector('h2').textContent;
 
     if (cardName.toLowerCase().indexOf(text)!=-1){
       card.style.display='flex';
+      visibleCount ++;
 
     }else{
       card.style.display='none';
@@ -128,6 +131,8 @@ function filterCards(){
   //when searching hide home section 
   const searching=text.trim()!=='';
   homeSection.classList.toggle('hidden',searching);
+
+  noResult.classList.toggle('hidden', !(searching && visibleCount===0));
 
   if(searching){
     window.scrollTo(0,0);
